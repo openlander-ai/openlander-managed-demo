@@ -24,6 +24,10 @@ It needs PostgreSQL and Redis. Create the required managed services in
 OpenLander, wire the env vars, deploy the app, verify /health, and give me the live URL.
 ```
 
+This is intentionally a **multi-step agent workflow**: the agent should inspect
+state, create managed services, wire env vars, deploy, and verify health through
+OpenLander's MCP tools. It is not a one-shot `execute_deploy_plan` demo.
+
 ## What you should see the agent do
 
 1. Analyze the repo → determine it needs `DATABASE_URL` + `REDIS_URL`.
