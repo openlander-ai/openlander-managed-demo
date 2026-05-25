@@ -1,0 +1,26 @@
+# LOCAL DEV ONLY — do NOT deploy this with OpenLander.
+#
+# OpenLander provisions Postgres + Redis as MANAGED SERVICES; this file only
+# lets you run the app on your laptop. It deliberately lives under local/ (NOT
+# repo root) so OpenLander's deploy planner never mistakes this repo for a
+# compose-stack deployment.
+#
+#   docker compose -f local/docker-compose.local.yml up --build
+services:
+  app:
+    build: ..
+    environment:
+      DATABASE_URL: postgresql://postgres:devpass@db:5432/postgres
+      REDIS_URL: redis://cache:6379
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - cache
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: devpass
+  cache:
+    image: redis:7-alpine

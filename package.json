@@ -1,0 +1,14 @@
+{
+  "name": "openlander-managed-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo: your agent provisions managed Postgres + Redis over MCP and wires them. Not a docker-compose stack.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.0",
+    "redis": "^4.7.0"
+  }
+}
